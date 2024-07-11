@@ -27,7 +27,6 @@ void farthest_insertion(struct Map *map, int *path) {
 
   srand((unsigned int)time(NULL));
   sv = rand() % vertex_n + 1;
-  sv = 1;
   added[sv] = 1;
 
   for(int i=0; i<vertex_n-1; i++) {

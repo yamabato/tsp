@@ -4,6 +4,7 @@
 
 #include "common.h"
 #include "read.h"
+#include "util.h"
 #include "farthest_insertion.h"
 
 int main() {
@@ -34,6 +35,8 @@ int main() {
     v = path[v];
   }
   printf("\n");
+
+  printf("distance: %d\n", calc_dis_sum(&map, path));
 
   printf("time: %lf\n", utime);
   printf("start: %ld\n", start_t);
