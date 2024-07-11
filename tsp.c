@@ -27,7 +27,7 @@ int main() {
 
   end_t = clock();
 
-  utime = (end_t - start_t) / CLOCKS_PER_SEC;
+  utime = (double)(end_t - start_t) / CLOCKS_PER_SEC;
 
   v = 1;
   for (int i=1; i<map.vertex_n+2; i++) {
