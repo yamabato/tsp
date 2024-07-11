@@ -19,8 +19,8 @@ void read_file(struct Map *map, char *fname) {
 
   for (int i=0; i<vertex_n; i++) {
     fscanf(fp, "%d %lf %lf", &vn, &vx, &vy);
-    map->vertex_arr[i].x = vx;
-    map->vertex_arr[i].y = vy;
+    map->vertex_arr[vn].x = vx;
+    map->vertex_arr[vn].y = vy;
   }
 }
 

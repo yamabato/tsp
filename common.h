@@ -1,7 +1,7 @@
 #ifndef _COMMON_H_
 #define _COMMON_H_
 
-#define MAX_VERTEX_N 254
+#define MAX_VERTEX_N 255
 
 // 各頂点を表す
 struct Vertex {
