@@ -27,9 +27,9 @@ void read_file(struct Map *map, char *fname) {
 // ユークリッド距離を計算
 void calc_each_euc_dis(struct Map *map) {
   struct Vertex v1, v2;
-  for (int i=0; i<map->vertex_n; i++) {
+  for (int i=0; i<map->vertex_n+1; i++) {
     v1 = map->vertex_arr[i];
-    for (int j=0; j<map->vertex_n; j++) {
+    for (int j=0; j<map->vertex_n+1; j++) {
       v2 = map->vertex_arr[j];
       map->vertex_arr[i].dis[j] = calc_euc_dis(v1.x, v1.y, v2.x, v2.y);
     }
