@@ -17,7 +17,7 @@ int main() {
 
   struct Map map;
 
-  int data_num = 0;
+  int data_num = 10;
   int prev_dis;
 
   map.fname = calloc(128, sizeof(char));
@@ -57,7 +57,7 @@ int main() {
 
   printf("END\n\n");
 
-  printf("time: %lf\n", utime);
+  printf("time: %lf / %lf\n", utime, TIME_LIMIT);
   printf("start: %ld\n", start_t);
   printf("  end: %ld\n", end_t);
 
