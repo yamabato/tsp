@@ -17,7 +17,7 @@ int main() {
 
   struct Map map;
 
-  int data_num = 10;
+  int data_num = 5;
   int prev_dis;
 
   map.fname = calloc(128, sizeof(char));
@@ -46,7 +46,7 @@ int main() {
     printf("\n");
     local_search(&map);
     show_path(&map);
-    if (prev_dis <= map.distance) { break; }
+    if (prev_dis == map.distance) { break; }
     prev_dis = map.distance;
 
     if ((clock() - start_t)/CLOCKS_PER_SEC >= TIME_LIMIT) { break; }
