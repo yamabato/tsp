@@ -29,6 +29,7 @@ int main() {
   set_data_info(&map);
 
   printf("file: %s\n", map.fname);
+  printf("type: %s\n", map.is_euc?"Euclidean":"Geographical");
   printf("best: %d\n", map.best);
   read_file(&map);
   calc_each_dis(&map);
