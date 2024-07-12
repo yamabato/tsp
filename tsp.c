@@ -23,9 +23,11 @@ int main(int argc, char **argv) {
   // int data_num = 0; // データの番号
   int prev_dis;     // 最適化前の距離
 
+  srand((unsigned int)time(NULL));
+
   // Map構造体における配列の領域を確保
   map.fname = calloc(128, sizeof(char));
-  map.vertex_arr = calloc(MAX_VERTEX_N, sizeof(struct Vertex));
+  map.vertex_arr = calloc(MAX_VERTEX_N+1, sizeof(struct Vertex));
   map.route = calloc(MAX_VERTEX_N+1, sizeof(int));
 
   parse_options(argc, argv, &cl_opt);

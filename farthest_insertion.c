@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
 
 #include "common.h"
 #include "util.h"
@@ -27,7 +26,6 @@ void farthest_insertion(struct Map *map, int *route) {
     next_v[i] = -1;
   }
 
-  srand((unsigned int)time(NULL));
   sv = rand() % vertex_n + 1;
   added[sv] = 1;
 
