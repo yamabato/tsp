@@ -55,7 +55,6 @@ char GEO_PATH[32] = "./DataFiles/Geographical/";
 
 void set_data_info(struct Map *map) {
   int data_num = map->data_num;
-  int is_euc = 0;
 
   if (data_num < 0 || data_num > DATA_COUNT - 1) {
     printf("data num %d is out of range.\n", data_num);
@@ -64,7 +63,7 @@ void set_data_info(struct Map *map) {
 
   map->is_euc = IS_EUC[data_num];
 
-  if (is_euc) { strcpy(map->fname, EUC_PATH); }
+  if (map->is_euc) { strcpy(map->fname, EUC_PATH); }
   else { strcpy(map->fname, GEO_PATH); }
 
   strcat(map->fname, DATA_FNAMES[data_num]);
