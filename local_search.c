@@ -18,8 +18,8 @@ void two_opt(struct Map *map) {
   int v11, v12;
   int v21, v22;
 
-  for (int i=1; i<map->vertex_n-1; i++) {
-    for (int j=i+2; j<map->vertex_n+1; j++) {
+  for (int i=0; i<map->vertex_n-2; i++) {
+    for (int j=i+2; j<map->vertex_n; j++) {
       v11 = map->route[i];
       v12 = map->route[i+1];
       v21 = map->route[j];

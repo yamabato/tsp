@@ -3,6 +3,8 @@ SRCS 		 = data.c farthest_insertion.c local_search.c read.c show.c tsp.c util.c 
 CC 			 = gcc
 CFLAGS 	 = -Wall -g
 
+DATANUM  = 1
+
 clean:
 	rm tsp
 
@@ -14,8 +16,8 @@ build: $(SRCS)
 
 run:
 	make build
-	./$(TARGET)
+	./$(TARGET) -d ${DATANUM}
 
 visualize:
 	make build
-	./$(TARGET) | python3 visualize.py
+	./$(TARGET) -r -d ${DATANUM} | python3 visualize.py

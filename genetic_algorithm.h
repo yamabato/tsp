@@ -9,6 +9,8 @@ struct Gene {
 };
 
 void genetic_algorithm(struct Map *);
+void partial_crossover(struct Map *, struct Gene *, struct Gene *);
+
 int cmp_gene(const void *, const void *);
 
 #endif

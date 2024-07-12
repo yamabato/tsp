@@ -12,7 +12,7 @@ void show_data_info(struct Map *map) {
 
 void show_path(struct Map *map) {
   printf("path: ");
-  for (int i=1; i<map->vertex_n+2; i++) {
+  for (int i=0; i<map->vertex_n+1; i++) {
     printf("%d ", map->route[i]);
   }
   printf("\n");

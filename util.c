@@ -52,7 +52,7 @@ int calc_dis_sum(struct Map *map, int *route) {
   int v1, v2;
   int sum = 0;
 
-  for (int i=1; i<map->vertex_n+1; i++) {
+  for (int i=0; i<map->vertex_n; i++) {
     v1 = route[i];
     v2 = route[i+1];
     sum += map->vertex_arr[v1].dis[v2];
@@ -63,7 +63,7 @@ int calc_dis_sum(struct Map *map, int *route) {
 
 void conv_route(struct Map * map, int *route, int *next_v, int sv) {
   int v = sv;
-  for (int i=1; i<map->vertex_n+2; i++) {
+  for (int i=0; i<map->vertex_n+1; i++) {
     route[i] = v;
     v = next_v[v];
   }
