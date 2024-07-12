@@ -1,13 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include <math.h>
 
 #include "common.h"
+#include "util.h"
 #include "farthest_insertion.h"
 
 // Farthest Insertionで解を構成
-void farthest_insertion(struct Map *map, int *path) {
+void farthest_insertion(struct Map *map) {
   struct Vertex *vertex_arr;
   int *dis_arr;
   int nd, nv;
@@ -17,12 +17,14 @@ void farthest_insertion(struct Map *map, int *path) {
   int sv;
   int added[MAX_VERTEX_N+1];
   int vertex_n = map->vertex_n;
+  int next_v[MAX_VERTEX_N+1];
 
   vertex_arr = map->vertex_arr;
 
-  for (int i=1; i<vertex_n+1; i++) {
+  for (int i=0; i<vertex_n+1; i++) {
     added[i] = 0;
-    path[i] = -1;
+    next_v[i] = -1;
+    next_v[i] = -1;
   }
 
   srand((unsigned int)time(NULL));
@@ -46,20 +48,22 @@ void farthest_insertion(struct Map *map, int *path) {
     for (int j=1; j<vertex_n+1; j++) {
       if (added[j] && fv != j && dis_arr[j] < nd) { nd=dis_arr[j]; nv=j; }
     }
-    nv1 = path[nv];
+    nv1 = next_v[nv];
     nv2 = -1;
     for (int j=1; j<vertex_n+1; j++) {
-      if (path[j] == nv) { nv2=j; break; }
+      if (next_v[j] == nv) { nv2=j; break; }
     }
 
-    if (nv1 == -1 && nv2 == -1) { path[nv]=fv; path[fv]=sv; }
-    else if (nv1 == -1) { path[nv2]=fv; path[fv]=nv; }
-    else if (nv2 == -1) { path[nv]=fv; path[fv]=nv1; }
+    if (nv1 == -1 && nv2 == -1) { next_v[nv]=fv; next_v[fv]=sv; }
+    else if (nv1 == -1) { next_v[nv2]=fv; next_v[fv]=nv; }
+    else if (nv2 == -1) { next_v[nv]=fv; next_v[fv]=nv1; }
     else {
       nv1_dis = vertex_arr[fv].dis[nv1] - vertex_arr[nv].dis[nv1];
       nv2_dis = vertex_arr[fv].dis[nv2] - vertex_arr[nv].dis[nv2];
-      if (nv1_dis < nv2_dis) { path[nv]=fv; path[fv]=nv1; }
-      else { path[nv2]=fv; path[fv]=nv; }
+      if (nv1_dis < nv2_dis) { next_v[nv]=fv; next_v[fv]=nv1; }
+      else { next_v[nv2]=fv; next_v[fv]=nv; }
     }
   }
+
+  conv_route(map, next_v, sv);
 }

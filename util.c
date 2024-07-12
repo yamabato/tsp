@@ -11,14 +11,22 @@ int calc_euc_dis(double x1, double y1, double x2, double y2) {
 }
 
 // 経路の距離を計算
-int calc_dis_sum(struct Map *map, int *path) {
+int calc_dis_sum(struct Map *map) {
   int v = 1;
   long int sum = 0;
 
   for (int i=1; i<map->vertex_n+1; i++) {
-    sum += map->vertex_arr[v].dis[path[v]];
-    v=path[v];
+    sum += map->vertex_arr[v].dis[map->route[v]];
+    v = map->route[v];
   }
 
   return sum;
+}
+
+void conv_route(struct Map *map, int *next_v, int sv) {
+  int v = sv;
+  for (int i=1; i<map->vertex_n+2; i++) {
+    map->route[i] = v;
+    v = next_v[v];
+  }
 }

@@ -6,6 +6,7 @@
 #include "read.h"
 #include "util.h"
 #include "farthest_insertion.h"
+#include "local_search.h"
 #include "show.h"
 
 int main() {
@@ -13,26 +14,29 @@ int main() {
   double utime;
 
   struct Map map;
-  int path[256];
   // char fname[128] = "test.tsp";
-  char fname[128] = "./DataFiles/Euclidean/ch130.tsp";
+  char fname[128] = "./DataFiles/Euclidean/eil51.tsp";
 
   map.vertex_arr = calloc(MAX_VERTEX_N, sizeof(struct Vertex));
+  map.route = calloc(MAX_VERTEX_N+1, sizeof(int));
+
+  printf("file: %s\n", fname);
   read_file(&map, fname);
   calc_each_euc_dis(&map);
 
   start_t = clock();
 
-  farthest_insertion(&map, path);
+  farthest_insertion(&map);
 
   end_t = clock();
 
   utime = (double)(end_t - start_t) / CLOCKS_PER_SEC;
 
+  show_path(&map);
+  printf("\n");
 
-  printf("file: %s\n", fname);
-
-  show_path(&map, path);
+  local_search(&map);
+  show_path(&map);
   printf("\n");
 
   printf("time: %lf\n", utime);

@@ -14,6 +14,7 @@ struct Vertex {
 struct Map {
   struct Vertex *vertex_arr; // 頂点群
   int vertex_n; // 頂点数
+  int *route; // 経路
 };
 
 #endif
