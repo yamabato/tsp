@@ -50,7 +50,7 @@ for i in range(count):
 
     num_tx = plt.text(0.0, 1.05, f"{(i+1):02}/{count:02}", ha="left", transform=ax.transAxes)
     dis_tx = plt.text(0.15, 1.05, f"distance: {dis_list[i]}", ha="left", transform=ax.transAxes)
-    eff_tx = plt.text(0.4, 1.05, f"efficiency: {eff_list[i]:.2f}", ha="left", transform=ax.transAxes)
+    eff_tx = plt.text(0.4, 1.05, f"efficiency: {eff_list[i]:.2f}%", ha="left", transform=ax.transAxes)
 
     ims.append([sc_im]+pl_im+[num_tx, dis_tx, eff_tx])
 
