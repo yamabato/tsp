@@ -62,7 +62,7 @@ void set_data_info(struct Map *map) {
     exit(1);
   }
 
-  is_euc = IS_EUC[data_num];
+  map->is_euc = IS_EUC[data_num];
 
   if (is_euc) { strcpy(map->fname, EUC_PATH); }
   else { strcpy(map->fname, GEO_PATH); }

@@ -1,3 +1,5 @@
+import datetime
+
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 
@@ -54,3 +56,5 @@ for i in range(count):
 
 ani = animation.ArtistAnimation(fig, ims, interval=500)
 plt.show()
+
+ani.save(f"path{datetime.datetime.now():%Y%m%d%H%M%S}.gif")
