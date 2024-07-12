@@ -3,5 +3,6 @@
 
 void show_data_info(struct Map *);
 void show_path(struct Map *);
+void show_performance(struct Map *);
 
 #endif

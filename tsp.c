@@ -36,7 +36,7 @@ int main(int argc, char **argv) {
   set_data_info(&map);
 
   // データ情報を表示
-  show_data_info(&map);
+  if (!cl_opt.perf_mode) { show_data_info(&map); }
 
   // ファイルを読み込み
   read_file(&map);
@@ -46,11 +46,11 @@ int main(int argc, char **argv) {
 
   // 最遠挿入法で解を構成
   farthest_insertion(&map);
-  printf("\n");
+  if (!cl_opt.perf_mode) { printf("\n"); }
 
   prev_dis = map.distance;
   while (1) {
-    if (cl_opt.progress ) { show_path(&map); printf("\n"); }
+    if (cl_opt.progress && !cl_opt.perf_mode) { show_path(&map); printf("\n"); }
     local_search(&map);
     if (prev_dis == map.distance) { break; }
     prev_dis = map.distance;
@@ -61,12 +61,20 @@ int main(int argc, char **argv) {
   end_t = clock();
   utime = (double)(end_t - start_t) / CLOCKS_PER_SEC;
 
-  show_path(&map);
-  printf("FIN\n\n");
+  if (!cl_opt.perf_mode) {
+    show_path(&map);
+    printf("FIN\n\n");
+  }
 
-  printf("time: %lf / %lf\n", utime, TIME_LIMIT);
-  printf("start: %ld\n", start_t);
-  printf("  end: %ld\n", end_t);
+  if (!cl_opt.perf_mode) {
+    printf("time: %lf / %lf\n", utime, TIME_LIMIT);
+    printf("start: %ld\n", start_t);
+    printf("  end: %ld\n", end_t);
+  }
+
+  if (cl_opt.perf_mode) {
+    show_performance(&map);
+  }
 
   return 0;
 }
