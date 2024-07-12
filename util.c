@@ -48,17 +48,17 @@ int calc_geo_dis(double x1, double y1, double x2, double y2) {
 }
 
 // 経路の距離を計算
-void calc_dis_sum(struct Map *map) {
+int calc_dis_sum(struct Map *map, int *route) {
   int v1, v2;
   long int sum = 0;
 
   for (int i=1; i<map->vertex_n+2; i++) {
-    v1 = map->route[i];
-    v2 = map->route[i+1];
+    v1 = route[i];
+    v2 = route[i+1];
     sum += map->vertex_arr[v1].dis[v2];
   }
 
-  map->distance = sum;
+  return sum;
 }
 
 void conv_route(struct Map * map, int *route, int *next_v, int sv) {

@@ -17,13 +17,13 @@ void show_path(struct Map *map) {
   }
   printf("\n");
 
-  calc_dis_sum(map);
+  map->distance = calc_dis_sum(map, map->route);
   printf("distance: %d\n", map->distance);
   printf("efficiency: %.2f\n", map->distance/(double)map->best*100);
 }
 
 void show_performance(struct Map *map) {
-  calc_dis_sum(map);
+  map->distance = calc_dis_sum(map, map->route);
   printf("%d\n", map->distance);
   printf("%.2f\n", map->distance/(double)map->best*100);
 }
