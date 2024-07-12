@@ -27,7 +27,6 @@ int main(int argc, char **argv) {
   map.vertex_arr = calloc(MAX_VERTEX_N, sizeof(struct Vertex));
   map.route = calloc(MAX_VERTEX_N+1, sizeof(int));
 
-  cl_opt.data_num = 0;
   parse_options(argc, argv, &cl_opt);
 
   // データ番号を設定
@@ -49,16 +48,12 @@ int main(int argc, char **argv) {
 
   // 最遠挿入法で解を構成
   farthest_insertion(&map);
-
   printf("\n");
-  // 現状の解を表示
-  show_path(&map);
 
   prev_dis = map.distance;
   while (1) {
-    printf("\n");
+    if (cl_opt.progress ) { show_path(&map); printf("\n"); }
     local_search(&map);
-    show_path(&map);
     if (prev_dis == map.distance) { break; }
     prev_dis = map.distance;
 
@@ -68,6 +63,7 @@ int main(int argc, char **argv) {
   end_t = clock();
   utime = (double)(end_t - start_t) / CLOCKS_PER_SEC;
 
+  show_path(&map);
   printf("END\n\n");
 
   printf("time: %lf / %lf\n", utime, TIME_LIMIT);

@@ -51,7 +51,7 @@ for i in range(count):
     y = y_list[i]
 
     sc_im = plt.scatter(x, y, marker="x", c="b", alpha=0.7)
-    pl_im = plt.plot(x, y, c=(0, (count-i+1)/count*0.6, 0.2+(i+1)/count*0.6), alpha=0.4+((i+1)/count)*0.6)
+    pl_im = plt.plot(x, y, c=(0, (count-i)/count*0.6, 0.2+(i+1)/count*0.6), alpha=0.4+((i+1)/count)*0.6)
 
     file_tx = plt.text(0.0, 1.10, f"file: {file_name}", ha="left", transform=ax.transAxes)
     kind_tx = plt.text(0.4, 1.10, f"kind: {kind}", ha="left", transform=ax.transAxes)

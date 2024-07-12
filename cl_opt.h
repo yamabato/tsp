@@ -2,6 +2,7 @@
 #define _CL_OPT_H_
 
 struct CLOpt {
+  int progress;
   int data_num;
 };
 
