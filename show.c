@@ -4,6 +4,12 @@
 #include "util.h"
 #include "show.h"
 
+void show_data_info(struct Map *map) {
+  printf("file: %s\n", map->fname);
+  printf("type: %s\n", map->is_euc?"Euclidean":"Geographical");
+  printf("best: %d\n", map->best);
+}
+
 void show_path(struct Map *map) {
   printf("path: ");
   for (int i=1; i<map->vertex_n+2; i++) {

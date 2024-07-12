@@ -36,9 +36,7 @@ int main(int argc, char **argv) {
   set_data_info(&map);
 
   // データ情報を表示
-  printf("file: %s\n", map.fname);
-  printf("type: %s\n", map.is_euc?"Euclidean":"Geographical");
-  printf("best: %d\n", map.best);
+  show_data_info(&map);
 
   // ファイルを読み込み
   read_file(&map);
@@ -64,7 +62,7 @@ int main(int argc, char **argv) {
   utime = (double)(end_t - start_t) / CLOCKS_PER_SEC;
 
   show_path(&map);
-  printf("END\n\n");
+  printf("FIN\n\n");
 
   printf("time: %lf / %lf\n", utime, TIME_LIMIT);
   printf("start: %ld\n", start_t);

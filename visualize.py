@@ -23,7 +23,7 @@ while True:
     eff_list.append(float(input().split()[1]))
     count += 1
 
-    if input() == "END": break;
+    if input() == "FIN": break;
 
 cities = {}
 with open(file_full_path, mode="r") as f:
