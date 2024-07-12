@@ -15,7 +15,7 @@ int main() {
   int path[256];
   int v;
   // char fname[128] = "test.tsp";
-  char fname[128] = "./DataFiles/Euclidean/eil51.tsp";
+  char fname[128] = "./DataFiles/Euclidean/ch130.tsp";
 
   map.vertex_arr = calloc(MAX_VERTEX_N, sizeof(struct Vertex));
   read_file(&map, fname);
@@ -29,6 +29,9 @@ int main() {
 
   utime = (double)(end_t - start_t) / CLOCKS_PER_SEC;
 
+  printf("file: %s\n", fname);
+
+  printf("path: ");
   v = 1;
   for (int i=1; i<map.vertex_n+2; i++) {
     printf("%d ", v);
@@ -37,6 +40,8 @@ int main() {
   printf("\n");
 
   printf("distance: %d\n", calc_dis_sum(&map, path));
+
+  printf("\n");
 
   printf("time: %lf\n", utime);
   printf("start: %ld\n", start_t);
