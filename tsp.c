@@ -6,6 +6,7 @@
 #include "read.h"
 #include "util.h"
 #include "farthest_insertion.h"
+#include "show.h"
 
 int main() {
   clock_t start_t, end_t;
@@ -13,7 +14,6 @@ int main() {
 
   struct Map map;
   int path[256];
-  int v;
   // char fname[128] = "test.tsp";
   char fname[128] = "./DataFiles/Euclidean/ch130.tsp";
 
@@ -29,18 +29,10 @@ int main() {
 
   utime = (double)(end_t - start_t) / CLOCKS_PER_SEC;
 
+
   printf("file: %s\n", fname);
 
-  printf("path: ");
-  v = 1;
-  for (int i=1; i<map.vertex_n+2; i++) {
-    printf("%d ", v);
-    v = path[v];
-  }
-  printf("\n");
-
-  printf("distance: %d\n", calc_dis_sum(&map, path));
-
+  show_path(&map, path);
   printf("\n");
 
   printf("time: %lf\n", utime);
