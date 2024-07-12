@@ -17,7 +17,7 @@ int main() {
 
   struct Map map;
 
-  int data_num = 5;
+  int data_num = 10;
   int prev_dis;
 
   map.fname = calloc(128, sizeof(char));
@@ -29,6 +29,7 @@ int main() {
   set_data_info(&map);
 
   printf("file: %s\n", map.fname);
+  printf("best: %d\n", map.best);
   read_file(&map);
   calc_each_dis(&map);
 

@@ -13,6 +13,7 @@ ims = []
 
 file_name = input().split()[-1]
 input()
+input()
 
 while True:
     path_list.append(input().split()[1:])
@@ -54,7 +55,7 @@ for i in range(count):
 
     ims.append([sc_im]+pl_im+[num_tx, dis_tx, eff_tx])
 
-ani = animation.ArtistAnimation(fig, ims, interval=500)
+ani = animation.ArtistAnimation(fig, ims, interval=1000)
 plt.show()
 
 ani.save(f"path{datetime.datetime.now():%Y%m%d%H%M%S}.gif")

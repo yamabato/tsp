@@ -26,17 +26,17 @@ int calc_geo_dis(double x1, double y1, double x2, double y2) {
 
   deg = round_off(x1);
   min = x1 - (double)deg;
-  lat1 = M_PI * (deg + 5.0 * min / 3.0) / 180.0;
+  lat1 = PI * (deg + 5.0 * min / 3.0) / 180.0;
   deg = round_off(y1);
   min = y1 - (double)deg;
-  longi1 =M_PI * (deg + 5.0 * min / 3.0) / 180.0; 
+  longi1 = PI * (deg + 5.0 * min / 3.0) / 180.0; 
 
   deg = round_off(x2);
   min = x2 - (double)deg;
-  lat2 = M_PI * (deg + 5.0 * min / 3.0) / 180.0;
+  lat2 = PI * (deg + 5.0 * min / 3.0) / 180.0;
   deg = round_off(y2);
   min = y2 - (double)deg;
-  longi2 =M_PI * (deg + 5.0 * min / 3.0) / 180.0; 
+  longi2 = PI * (deg + 5.0 * min / 3.0) / 180.0; 
 
   q1 = cos(longi1 - longi2);
   q2 = cos(lat1 - lat2);

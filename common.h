@@ -4,6 +4,9 @@
 #define MAX_VERTEX_N 255
 #define TIME_LIMIT 1.111453
 
+#define PI 3.141592
+// M_PI = 3.141593
+
 // 各頂点を表す
 struct Vertex {
   double x; // x座標
