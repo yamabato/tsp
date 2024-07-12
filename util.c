@@ -61,10 +61,10 @@ void calc_dis_sum(struct Map *map) {
   map->distance = sum;
 }
 
-void conv_route(struct Map *map, int *next_v, int sv) {
+void conv_route(struct Map * map, int *route, int *next_v, int sv) {
   int v = sv;
   for (int i=1; i<map->vertex_n+2; i++) {
-    map->route[i] = v;
+    route[i] = v;
     v = next_v[v];
   }
 }

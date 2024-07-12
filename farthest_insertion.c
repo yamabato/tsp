@@ -7,7 +7,7 @@
 #include "farthest_insertion.h"
 
 // Farthest Insertionで解を構成
-void farthest_insertion(struct Map *map) {
+void farthest_insertion(struct Map *map, int *route) {
   struct Vertex *vertex_arr;
   int *dis_arr;
   int nd, nv;
@@ -65,5 +65,5 @@ void farthest_insertion(struct Map *map) {
     }
   }
 
-  conv_route(map, next_v, sv);
+  conv_route(map, route , next_v, sv);
 }
