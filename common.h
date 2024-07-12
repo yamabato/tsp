@@ -2,6 +2,7 @@
 #define _COMMON_H_
 
 #define MAX_VERTEX_N 255
+#define TIME_LIMIT 1.111453
 
 // 各頂点を表す
 struct Vertex {
@@ -12,9 +13,14 @@ struct Vertex {
 
 // 与えられた都市群の情報を保持
 struct Map {
+  int data_num;
+  char *fname;
+  int is_euc;
+  int best;
   struct Vertex *vertex_arr; // 頂点群
   int vertex_n; // 頂点数
   int *route; // 経路
+  int distance;
 };
 
 #endif

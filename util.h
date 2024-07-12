@@ -1,8 +1,10 @@
 #ifndef _UTIL_H_
 #define _UTIL_H_
 
+int round_off(double);
 int calc_euc_dis(double, double, double, double);
-int calc_dis_sum(struct Map *);
+int calc_geo_dis(double, double, double, double);
+void calc_dis_sum(struct Map *);
 void conv_route(struct Map *, int *, int);
 
 #endif
