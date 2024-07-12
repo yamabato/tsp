@@ -17,7 +17,7 @@ int main() {
 
   struct Map map;
 
-  int data_num = 10;
+  int data_num = 0;
   int prev_dis;
 
   map.fname = calloc(128, sizeof(char));

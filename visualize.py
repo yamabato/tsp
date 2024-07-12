@@ -50,15 +50,16 @@ for i in range(count):
     x = x_list[i]
     y = y_list[i]
 
-    sc_im = plt.scatter(x, y, marker="x", c="b", alpha=0.8)
-    pl_im = plt.plot(x, y, c="b", alpha=0.4)
+    sc_im = plt.scatter(x, y, marker="x", c="b", alpha=0.7)
+    pl_im = plt.plot(x, y, c=(0, (count-i+1)/count*0.6, 0.2+(i+1)/count*0.6), alpha=0.4+((i+1)/count)*0.6)
 
     file_tx = plt.text(0.0, 1.10, f"file: {file_name}", ha="left", transform=ax.transAxes)
     kind_tx = plt.text(0.4, 1.10, f"kind: {kind}", ha="left", transform=ax.transAxes)
+    best_tx = plt.text(0.7, 1.10, f"best: {best}", ha="left", transform=ax.transAxes)
+
     num_tx = plt.text(0.0, 1.05, f"{(i+1):02}/{count:02}", ha="left", transform=ax.transAxes)
     dis_tx = plt.text(0.15, 1.05, f"distance: {dis_list[i]}", ha="left", transform=ax.transAxes)
-    best_tx = plt.text(0.4, 1.05, f"best: {best}", ha="left", transform=ax.transAxes)
-    eff_tx = plt.text(0.6, 1.05, f"efficiency: {eff_list[i]:.2f}%", ha="left", transform=ax.transAxes)
+    eff_tx = plt.text(0.4, 1.05, f"efficiency: {eff_list[i]:.2f}%", ha="left", transform=ax.transAxes)
 
     ims.append([sc_im]+pl_im+[file_tx, kind_tx]+[num_tx, dis_tx, best_tx, eff_tx])
 
