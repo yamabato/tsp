@@ -1,3 +1,4 @@
+import sys
 import csv
 import subprocess
 
@@ -19,4 +20,4 @@ print(eff_ave)
 
 with open("perf.csv", "a") as f:
     writer = csv.writer(f, lineterminator="\n")
-    writer.writerow(eff_ave)
+    writer.writerow([sys.argv[1]] + eff_ave)
