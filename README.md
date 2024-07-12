@@ -11,3 +11,10 @@ gcc -o tsp *.c -lm
 ```
 ./tsp
 ```
+
+### 経路表示
+```
+./tsp | python3 visualize.py
+```
+
+要python3, matplotlib
