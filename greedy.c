@@ -1,0 +1,41 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+#include "common.h"
+#include "util.h"
+#include "greedy.h"
+
+// greedy法で解を構成
+void greedy(struct Map *map, int *route) {
+  struct Vertex *vertex_arr;
+  int *dis_arr;
+  int nd, nv;
+  int v;
+  int sv;
+  int added[MAX_VERTEX_N+1];
+  int vertex_n = map->vertex_n;
+
+  vertex_arr = map->vertex_arr;
+  for (int i=0; i<vertex_n+1; i++) {
+    added[i] = 0;
+  }
+
+  sv = rand() % vertex_n + 1;
+  added[sv] = 1;
+  map->route[0] = sv;
+
+  v = sv;
+  for (int i=0; i<vertex_n-1; i++) {
+    nd = 2147483647;
+    nv = -1;
+    dis_arr = vertex_arr[v].dis;
+    for (int j=1; j<vertex_n+1; j++) {
+      if (!added[j] && dis_arr[j] < nd) { nd=dis_arr[j]; nv=j; }
+    }
+
+    map->route[i+1] = nv;
+    added[nv] = 1;
+    v = nv;
+  }
+  map->route[vertex_n] = sv;
+}
