@@ -6,14 +6,13 @@
 #include "farthest_insertion.h"
 
 // Farthest Insertionで解を構成
-void farthest_insertion(struct Map *map, int *route) {
+void farthest_insertion(struct Map *map, int *route, int sv) {
   struct Vertex *vertex_arr;
   int *dis_arr;
   int nd, nv;
   int nv1, nv2;
   int nv1_dis, nv2_dis;
   int fd, fv; // farthest distance, vertex
-  int sv;
   int added[MAX_VERTEX_N+1];
   int vertex_n = map->vertex_n;
   int next_v[MAX_VERTEX_N+1];
@@ -25,8 +24,6 @@ void farthest_insertion(struct Map *map, int *route) {
     next_v[i] = -1;
     next_v[i] = -1;
   }
-
-  sv = rand() % vertex_n + 1;
   added[sv] = 1;
 
   for(int i=0; i<vertex_n-1; i++) {

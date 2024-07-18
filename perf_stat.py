@@ -9,6 +9,7 @@ perf = []
 eff_ave = []
 
 for i in range(MAX_DATA_NUM+1):
+    print("num: ", i);
     perf.append([])
     for _ in range(COUNT):
         output = subprocess.run(f"./tsp -p -d {i}", shell=True, capture_output=True, text=True).stdout

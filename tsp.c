@@ -21,6 +21,9 @@ int main(int argc, char **argv) {
 
   struct CLOpt cl_opt;
   struct Map map; // 都市群の情報を保持する構造体
+  int route_best[MAX_VERTEX_N+1];
+  int sv;
+  int best = 2147483647;
 
   // int data_num = 0; // データの番号
   int prev_dis;     // 最適化前の距離
@@ -50,22 +53,30 @@ int main(int argc, char **argv) {
   start_t = clock(); // 開始時のクロック
 
   // 最遠挿入法で解を構成
-  farthest_insertion(&map, map.route);
-  // nearest_insertion(&map, map.route);
-  // greedy(&map, map.route);
   if (!cl_opt.perf_mode) { printf("\n"); }
-
-  map.distance = calc_dis_sum(&map, map.route);
-  prev_dis = map.distance;
   while (1) {
-    if (cl_opt.progress && !cl_opt.perf_mode) { show_path(&map); printf("\n"); }
-    local_search(&map);
-    map.distance = calc_dis_sum(&map, map.route);
-    if (prev_dis == map.distance) { break; }
-    prev_dis = map.distance;
+    sv = rand() % map.vertex_n + 1;
+    farthest_insertion(&map, map.route, sv);
 
+    map.distance = calc_dis_sum(&map, map.route);
+    prev_dis = map.distance;
+    while (1) {
+      if (cl_opt.progress && !cl_opt.perf_mode) { show_path(&map); printf("\n"); }
+      local_search(&map);
+      map.distance = calc_dis_sum(&map, map.route);
+      if (prev_dis == map.distance) { break; }
+      prev_dis = map.distance;
+
+      if ((clock() - start_t)/CLOCKS_PER_SEC >= TIME_LIMIT) { break; }
+    }
+    if (map.distance < best) {
+      best = map.distance;
+      memcpy(route_best, map.route, sizeof(route_best));
+    }
     if ((clock() - start_t)/CLOCKS_PER_SEC >= TIME_LIMIT) { break; }
   }
+
+  memcpy(map.route, route_best, sizeof(route_best));
 
   end_t = clock();
   utime = (double)(end_t - start_t) / CLOCKS_PER_SEC;

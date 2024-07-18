@@ -13,7 +13,7 @@ void genetic_algorithm(struct Map *map) {
 
   for (int i=0; i<GENE_COUNT; i++) {
     gene_arr[i].route = calloc(MAX_VERTEX_N+1, sizeof(int));
-    farthest_insertion(map, gene_arr[i].route);
+    // farthest_insertion(map, gene_arr[i].route);
     gene_arr[i].dist = calc_dis_sum(map, gene_arr[i].route);
   }
 

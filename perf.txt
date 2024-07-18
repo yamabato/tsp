@@ -5,4 +5,9 @@ gr: 貪欲法
 ls: 局所探索
  1: 2-opt
  2: or-1-opt -> 2-opt
- 2: or-1-opt -> or-2-opt -> 2-opt
+ 3: or-1-opt -> 2-opt -> or-2-opt
+ 4: or-1-opt -> or-2-opt -> 2-opt
+ 5: 2-opt -> or-1-opt -> or-2-opt
+ 6: or-1-opt -> 2-opt -> or-2-opt -> 2-opt
+ 7: 6 + sv_rand
+ 8: 1 + sv_rand
