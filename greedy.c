@@ -6,12 +6,11 @@
 #include "greedy.h"
 
 // greedy法で解を構成
-void greedy(struct Map *map, int *route) {
+void greedy(struct Map *map, int *route, int sv) {
   struct Vertex *vertex_arr;
   int *dis_arr;
   int nd, nv;
   int v;
-  int sv;
   int added[MAX_VERTEX_N+1];
   int vertex_n = map->vertex_n;
 
@@ -20,7 +19,6 @@ void greedy(struct Map *map, int *route) {
     added[i] = 0;
   }
 
-  sv = rand() % vertex_n + 1;
   added[sv] = 1;
   map->route[0] = sv;
 

@@ -55,7 +55,7 @@ int main(int argc, char **argv) {
 
   // 最遠挿入法で解を構成
   if (!cl_opt.perf_mode) { printf("\n"); }
-  while (1) {
+  for (int i=0; i<map.vertex_n; i++) {
     sv = rand() % map.vertex_n + 1;
     farthest_insertion(&map, map.route, sv);
 
@@ -68,19 +68,19 @@ int main(int argc, char **argv) {
       if (prev_dis == map.distance) { break; }
       prev_dis = map.distance;
 
-      if ((clock() - start_t)/CLOCKS_PER_SEC >= TIME_LIMIT) { break; }
+      if ((clock() - start_t)/(double)CLOCKS_PER_SEC >= TIME_LIMIT) { break; }
     }
     if (map.distance < best) {
       best = map.distance;
       memcpy(route_best, map.route, sizeof(route_best));
     }
-    if ((clock() - start_t)/CLOCKS_PER_SEC >= TIME_LIMIT) { break; }
+    if ((clock() - start_t)/(double)CLOCKS_PER_SEC >= TIME_LIMIT) { break; }
   }
 
   memcpy(map.route, route_best, sizeof(route_best));
 
   end_t = clock();
-  utime = (double)(end_t - start_t) / CLOCKS_PER_SEC;
+  utime = (end_t - start_t) / (double)CLOCKS_PER_SEC;
 
   if (!cl_opt.perf_mode) {
     show_path(&map);
