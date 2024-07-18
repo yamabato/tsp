@@ -9,9 +9,11 @@
 void local_search(struct Map *map) {
   if (map->vertex_n <= 3) { return; }
 
+  two_opt(map);
   or_one_opt(map);
   two_opt(map);
   or_two_opt(map);
+  two_opt(map);
 }
 
 void two_opt(struct Map *map) {
@@ -32,7 +34,7 @@ void two_opt(struct Map *map) {
       ds1 = map->vertex_arr[v11].dis[v21];
       ds2 = map->vertex_arr[v12].dis[v22];
 
-      if (d1+d2 > ds1+ds2) {
+      if (rand()%1000 == -1||d1+d2 > ds1+ds2) {
         map->route[i+1] = v21;
         map->route[j] = v12;
       }
