@@ -10,6 +10,7 @@
 #include "util.h"
 #include "farthest_insertion.h"
 #include "nearest_insertion.h"
+#include "kruskal.h"
 #include "greedy.h"
 #include "local_search.h"
 #include "genetic_algorithm.h"

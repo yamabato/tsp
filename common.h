@@ -14,6 +14,13 @@ struct Vertex {
   int dis[MAX_VERTEX_N]; // 他頂点との距離
 };
 
+struct Edge {
+  int v1;
+  int v2;
+  int weight;
+  int e;
+};
+
 // 与えられた都市群の情報を保持
 struct Map {
   int data_num;             // データの番号

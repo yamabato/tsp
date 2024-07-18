@@ -1,7 +1,7 @@
 TARGET	 = tsp
 SRCS		 = *.c
 CC 			 = gcc
-CFLAGS 	 = -Wall -g
+CFLAGS 	 = -Wall -g -O3 -Wno-unused-result
 
 DATANUM  = 1
 
