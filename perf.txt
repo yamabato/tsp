@@ -1,0 +1,8 @@
+fi: 最遠挿入
+ni: 最近挿入
+gr: 貪欲法
+
+ls: 局所探索
+ 1: 2-opt
+ 2: or-1-opt -> 2-opt
+ 2: or-1-opt -> or-2-opt -> 2-opt

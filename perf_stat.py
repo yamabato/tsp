@@ -20,4 +20,4 @@ print(eff_ave)
 
 with open("perf.csv", "a") as f:
     writer = csv.writer(f, lineterminator="\n")
-    writer.writerow([sys.argv[1]] + eff_ave)
+    writer.writerow([sys.argv[1]] + [f"{e:.2f}" for e in eff_ave])

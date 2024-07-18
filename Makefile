@@ -1,5 +1,5 @@
 TARGET	 = tsp
-SRCS 		 = data.c farthest_insertion.c greedy.c local_search.c read.c show.c tsp.c util.c cl_opt.c genetic_algorithm.c
+SRCS		 = *.c
 CC 			 = gcc
 CFLAGS 	 = -Wall -g
 

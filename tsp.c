@@ -9,6 +9,7 @@
 #include "read.h"
 #include "util.h"
 #include "farthest_insertion.h"
+#include "nearest_insertion.h"
 #include "greedy.h"
 #include "local_search.h"
 #include "genetic_algorithm.h"
@@ -49,8 +50,9 @@ int main(int argc, char **argv) {
   start_t = clock(); // 開始時のクロック
 
   // 最遠挿入法で解を構成
-  // farthest_insertion(&map, map.route);
-  greedy(&map, map.route);
+  farthest_insertion(&map, map.route);
+  // nearest_insertion(&map, map.route);
+  // greedy(&map, map.route);
   if (!cl_opt.perf_mode) { printf("\n"); }
 
   map.distance = calc_dis_sum(&map, map.route);
