@@ -4,7 +4,6 @@
 #include "common.h"
 #include "util.h"
 #include "farthest_insertion.h"
-
 // Farthest Insertionで解を構成
 void farthest_insertion(struct Map *map, int *route, int sv) {
   struct Vertex *vertex_arr;

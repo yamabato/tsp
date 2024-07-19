@@ -57,7 +57,7 @@ int main(int argc, char **argv) {
   if (!cl_opt.perf_mode) { printf("\n"); }
   while(1) {
     sv = rand() % map.vertex_n + 1;
-    greedy(&map, map.route, sv);
+    farthest_insertion(&map, map.route, sv);
 
     map.distance = calc_dis_sum(&map, map.route);
     prev_dis = map.distance;

@@ -3,7 +3,7 @@ import csv
 import subprocess
 
 MAX_DATA_NUM = 15
-COUNT = 100
+COUNT = 10
 
 perf = []
 eff_ave = []

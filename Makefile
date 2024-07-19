@@ -1,7 +1,7 @@
 TARGET	 = tsp
 SRCS		 = *.c
 CC 			 = gcc
-CFLAGS 	 = -Wall -g -O3 -Wno-unused-result
+CFLAGS 	 = -Wall -g -mtune=native -march=native -mfpmath=both -O3 -Wno-unused-result
 
 DATANUM  = 1
 

@@ -7,7 +7,7 @@
 #include "local_search.h"
 
 void local_search(struct Map *map) {
-  if (map->vertex_n <= 3) { return; }
+  // if (map->vertex_n <= 3) { return; }
 
   two_opt(map);
   or_one_opt(map);
