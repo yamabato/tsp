@@ -1,11 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <limits.h>
 
 #include "common.h"
 #include "util.h"
 #include "greedy.h"
 
-// greedy法で解を構成
+// nearest neighbor法で解を構成
 void greedy(struct Map *map, int *route, int sv) {
   struct Vertex *vertex_arr;
   int *dis_arr;
@@ -24,7 +25,7 @@ void greedy(struct Map *map, int *route, int sv) {
 
   v = sv;
   for (int i=0; i<vertex_n-1; i++) {
-    nd = 2147483647;
+    nd = INT_MAX;
     nv = -1;
     dis_arr = vertex_arr[v].dis;
     for (int j=1; j<vertex_n+1; j++) {

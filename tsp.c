@@ -28,9 +28,6 @@ int solve(struct Map *map, int *route_best, void f(struct Map *, int *, int), do
     sv = rand() % map->vertex_n + 1;
     f(map, map->route, sv);
 
-    show_path(map);
-    exit(0);
-
     map->distance = calc_dis_sum(map, map->route);
     prev_dis = map->distance;
     while (1) {
@@ -57,10 +54,13 @@ int main(int argc, char **argv) {
 
   struct CLOpt cl_opt;
   struct Map map; // 都市群の情報を保持する構造体
+  int ri_route_best[MAX_VERTEX_N+1];
   int gr_route_best[MAX_VERTEX_N+1];
   int kr_route_best[MAX_VERTEX_N+1];
+  int ri_best = INT_MAX;
   int gr_best = INT_MAX;
   int kr_best = INT_MAX;
+  int bn = 0;
 
   srand((unsigned int)time(NULL));
 
@@ -89,10 +89,15 @@ int main(int argc, char **argv) {
   // 最遠挿入法で解を構成
   if (!cl_opt.perf_mode) { printf("\n"); }
 
-  gr_best = solve(&map, gr_route_best, random_insertion, TIME_LIMIT*0.48);
-  kr_best = solve(&map, kr_route_best, euler, TIME_LIMIT*0.48);
+  ri_best = solve(&map, ri_route_best, random_insertion, TIME_LIMIT*0.48);
+  gr_best = solve(&map, gr_route_best, greedy, TIME_LIMIT*0.48);
+  kr_best = solve(&map, kr_route_best, euler, TIME_LIMIT*0.0);
 
-  if (gr_best < kr_best) { memcpy(map.route, gr_route_best, sizeof(gr_route_best)); }
+  if (ri_best > gr_best) { bn = 1; }
+  if (gr_best > kr_best) { bn = 2; }
+
+  if (bn == 0) { memcpy(map.route, ri_route_best, sizeof(ri_route_best)); }
+  else if (bn == 1) { memcpy(map.route, gr_route_best, sizeof(gr_route_best)); }
   else { memcpy(map.route, kr_route_best, sizeof(kr_route_best)); }
 
   end_t = clock();
