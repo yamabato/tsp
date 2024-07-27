@@ -10,6 +10,7 @@
 #include "read.h"
 #include "util.h"
 #include "farthest_insertion.h"
+#include "random_insertion.h"
 #include "nearest_insertion.h"
 #include "kruskal.h"
 #include "greedy.h"
@@ -26,6 +27,9 @@ int solve(struct Map *map, int *route_best, void f(struct Map *, int *, int), do
   while(1) {
     sv = rand() % map->vertex_n + 1;
     f(map, map->route, sv);
+
+    show_path(map);
+    exit(0);
 
     map->distance = calc_dis_sum(map, map->route);
     prev_dis = map->distance;
@@ -85,7 +89,7 @@ int main(int argc, char **argv) {
   // 最遠挿入法で解を構成
   if (!cl_opt.perf_mode) { printf("\n"); }
 
-  gr_best = solve(&map, gr_route_best, greedy, TIME_LIMIT*0.48);
+  gr_best = solve(&map, gr_route_best, random_insertion, TIME_LIMIT*0.48);
   kr_best = solve(&map, kr_route_best, euler, TIME_LIMIT*0.48);
 
   if (gr_best < kr_best) { memcpy(map.route, gr_route_best, sizeof(gr_route_best)); }
