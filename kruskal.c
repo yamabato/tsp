@@ -4,28 +4,55 @@
 #include "common.h"
 #include "kruskal.h"
 
-void christofides(struct Map *map, int *route) {
+void euler(struct Map *map, int *route, int sv) {
   int en;
+  int v;
   int v1, v2;
-  int deg[MAX_VERTEX_N];
   struct Edge edges[MAX_VERTEX_N*MAX_VERTEX_N];
   int T[MAX_VERTEX_N*MAX_VERTEX_N];
 
+  int edge_matrix[MAX_VERTEX_N][MAX_VERTEX_N];
+  int discover[MAX_VERTEX_N];
+  int x = 0;
+  int vn = 0;
+  int dm = 2147483647;
+  int t = 0;
+
+  for (int i=0; i<MAX_VERTEX_N; i++) {
+    discover[i] = -1;
+    for (int j=0; j<MAX_VERTEX_N; j++) {
+      edge_matrix[i][j] = 0;
+    }
+  }
+
   en = build_kruskal_tree(map, route, edges, T);
 
-  int x = 0;
-  for (int i=0; i<map->vertex_n; i++) { deg[i] = 0; }
   for (int i=0; i<en; i++) {
     if (T[i]) {
       v1 = edges[i].v1;
       v2 = edges[i].v2;
-      deg[v1]++;
-      deg[v2]++;
+      edge_matrix[v1][v2] = 1;
+      edge_matrix[v2][v1] = 1;
     }
   }
 
-  for (int i=0; i<map->vertex_n; i++) { x += (deg[i]%2==0)?1:0; }
-  printf("%d\n", x);
+  v = sv - 1;
+  discover[v] = 0;
+  route[0] = v+1;
+  while (x < map->vertex_n - 1) {
+    dm = 2147483647;
+    for (int j=0; j<map->vertex_n; j++) {
+      if (edge_matrix[v][j] && dm > discover[j]) {
+        dm = discover[j];
+        vn = j;
+      }
+    }
+    if (discover[vn] == -1) { route[++x] = vn+1; }
+    discover[vn] = ++t;
+    v = vn;
+  }
+
+  route[++x] = sv;
 }
 
 int build_kruskal_tree(struct Map *map, int *route, struct Edge *edges, int *T) {

@@ -55,10 +55,10 @@ int main(int argc, char **argv) {
 
   // 最遠挿入法で解を構成
   if (!cl_opt.perf_mode) { printf("\n"); }
-  // while(1) {
-  for (int i=0; i<map.vertex_n-1; i++) {
-    // sv = rand() % map.vertex_n + 1;
-    greedy(&map, map.route, i);
+  while(1) {
+    sv = rand() % map.vertex_n + 1;
+    // greedy(&map, map.route, sv);
+    euler(&map, map.route, sv);
 
     map.distance = calc_dis_sum(&map, map.route);
     prev_dis = map.distance;

@@ -7,7 +7,7 @@ int find_set(int *, int);
 void link(int *, int *, int, int);
 void kruskal(int, int, struct Edge*, int *, int *);
 int build_kruskal_tree(struct Map *, int *, struct Edge *, int *);
-void christofides(struct Map*, int *);
+void euler(struct Map*, int *, int);
 
 int cmp_edge(const void *, const void *);
 
