@@ -14,6 +14,13 @@ void local_search(struct Map *map) {
   two_opt(map);
   or_two_opt(map);
   two_opt(map);
+  /*
+  two_opt(map);
+  or_one_opt(map);
+  two_opt(map);
+  or_two_opt(map);
+  two_opt(map);
+  */
 }
 
 void two_opt(struct Map *map) {
@@ -21,8 +28,9 @@ void two_opt(struct Map *map) {
   int ds1, ds2;
   int v11, v12;
   int v21, v22;
+  int tmp;
 
-  for (int i=0; i<map->vertex_n-2; i++) {
+  for (int i=0; i<map->vertex_n-3; i++) {
     for (int j=i+2; j<map->vertex_n; j++) {
       v11 = map->route[i];
       v12 = map->route[i+1];
@@ -37,6 +45,12 @@ void two_opt(struct Map *map) {
       if (d1+d2 > ds1+ds2) {
         map->route[i+1] = v21;
         map->route[j] = v12;
+
+        for (int k=0; k<(j-i-1)/2; k++) {
+          tmp = map->route[j-1-k];
+          map->route[j-1-k] = map->route[i+2+k];
+          map->route[i+2+k] = tmp;
+        }
       }
     }
   }

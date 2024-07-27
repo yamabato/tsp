@@ -66,6 +66,7 @@ int main(int argc, char **argv) {
       if (cl_opt.progress && !cl_opt.perf_mode) { show_path(&map); printf("\n"); }
       local_search(&map);
       map.distance = calc_dis_sum(&map, map.route);
+      if (prev_dis < map.distance) { printf("EEEEEEE\n"); }
       if (prev_dis == map.distance) { break; }
       prev_dis = map.distance;
 
