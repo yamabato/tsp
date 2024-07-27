@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <limits.h>
 
 #include "common.h"
 #include "util.h"
@@ -27,7 +28,7 @@ void nearest_insertion(struct Map *map, int *route, int sv) {
   added[sv] = 1;
 
   for(int i=0; i<vertex_n-1; i++) {
-    ad = 2147483647;
+    ad = INT_MAX;
     av = -1;
     for (int j=1; j<vertex_n+1; j++) {
       if (!added[j]) { continue; }
@@ -37,7 +38,7 @@ void nearest_insertion(struct Map *map, int *route, int sv) {
     }
     added[av] = 1;
 
-    nd = 2147483647;
+    nd = INT_MAX;
     nv = -1;
     dis_arr = vertex_arr[av].dis;
     for (int j=1; j<vertex_n+1; j++) {

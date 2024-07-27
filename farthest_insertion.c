@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <limits.h>
 
 #include "common.h"
 #include "util.h"
@@ -36,7 +37,7 @@ void farthest_insertion(struct Map *map, int *route, int sv) {
     }
     added[fv] = 1;
 
-    nd = 2147483647;
+    nd = INT_MAX;
     nv = -1;
     dis_arr = vertex_arr[fv].dis;
     for (int j=1; j<vertex_n+1; j++) {

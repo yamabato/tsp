@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <limits.h>
 
 #include "common.h"
 #include "kruskal.h"
@@ -15,7 +16,7 @@ void euler(struct Map *map, int *route, int sv) {
   int discover[MAX_VERTEX_N];
   int x = 0;
   int vn = 0;
-  int dm = 2147483647;
+  int dm = INT_MAX;
   int t = 0;
 
   for (int i=0; i<MAX_VERTEX_N; i++) {
@@ -40,7 +41,7 @@ void euler(struct Map *map, int *route, int sv) {
   discover[v] = 0;
   route[0] = v+1;
   while (x < map->vertex_n - 1) {
-    dm = 2147483647;
+    dm = INT_MAX;
     for (int j=0; j<map->vertex_n; j++) {
       if (edge_matrix[v][j] && dm > discover[j]) {
         dm = discover[j];

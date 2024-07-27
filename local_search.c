@@ -9,18 +9,14 @@
 void local_search(struct Map *map) {
   // if (map->vertex_n <= 3) { return; }
 
+  /* or_one_opt(map); */
+  /* or_two_opt(map); */
+  /* two_opt(map); */
   two_opt(map);
   or_one_opt(map);
   two_opt(map);
   or_two_opt(map);
   two_opt(map);
-  /*
-  two_opt(map);
-  or_one_opt(map);
-  two_opt(map);
-  or_two_opt(map);
-  two_opt(map);
-  */
 }
 
 void two_opt(struct Map *map) {
