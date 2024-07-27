@@ -85,8 +85,8 @@ int main(int argc, char **argv) {
   // 最遠挿入法で解を構成
   if (!cl_opt.perf_mode) { printf("\n"); }
 
-  gr_best = solve(&map, gr_route_best, greedy, TIME_LIMIT*0.45);
-  kr_best = solve(&map, kr_route_best, euler, TIME_LIMIT*0.45);
+  gr_best = solve(&map, gr_route_best, greedy, TIME_LIMIT*0.48);
+  kr_best = solve(&map, kr_route_best, euler, TIME_LIMIT*0.48);
 
   if (gr_best < kr_best) { memcpy(map.route, gr_route_best, sizeof(gr_route_best)); }
   else { memcpy(map.route, kr_route_best, sizeof(kr_route_best)); }
