@@ -1,0 +1,12 @@
+file: ./DataFiles/Geographical/burma14.tsp
+type: Geographical
+best: 3323
+
+path: 1 10 11 9 8 13 7 12 6 5 4 3 14 2 1
+distance: 3454
+efficiency: 103.94
+FIN
+
+time: 1.068536 / 1.111453
+start: 595
+  end: 1069131

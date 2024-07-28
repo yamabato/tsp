@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "tty-table": "^4.2.3"
+  }
+}

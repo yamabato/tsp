@@ -34,7 +34,7 @@ void two_opt(struct Map *map) {
   int v21, v22;
   int tmp;
 
-  for (int i=0; i<map->vertex_n-3; i++) {
+  for (int i=0; i<map->vertex_n-2; i++) {
     for (int j=i+2; j<map->vertex_n; j++) {
       v11 = map->route[i];
       v12 = map->route[i+1];
@@ -76,8 +76,8 @@ void three_opt(struct Map *map) {
   int mn = -1;
   int dm = INT_MAX;
 
-  for (int i=0; i<map->vertex_n-5; i++) {
-    for (int j=i+2; j<map->vertex_n-3; j++) {
+  for (int i=0; i<map->vertex_n-4; i++) {
+    for (int j=i+2; j<map->vertex_n-2; j++) {
       for (int k=j+2; k<map->vertex_n; k++) {
         v11 = map->route[i];
         v12 = map->route[i+1];
@@ -108,17 +108,18 @@ void three_opt(struct Map *map) {
         le2 = k - (j+1) - 1;
 
         dm = ds1; mn = 0;
-        if (ds1 > ds2) { dm=ds2; mn=1; }
+        if (ds2 < dm) { dm=ds2; mn=1; }
         if (ds3 < dm) { dm=ds3; mn=2; }
         if (ds4 < dm) { dm=ds4; mn=3; }
 
         if (dm >= d) { continue; }
 
         if (mn == 0) {
+          continue;
           swap_vertex(map, i+1, j); reverse_path(map, i+2, j-1);
           swap_vertex(map, j+1, k); reverse_path(map, j+2, k-1);
-        }
-        else if (mn == 1) {
+        } else if (mn == 1) {
+          continue;
           map->route[i+1] = v22;
           map->route[k] = v21;
           memcpy(path_tmp, &map->route[i+2], sizeof(int)*le1);
@@ -126,8 +127,8 @@ void three_opt(struct Map *map) {
           memcpy(&map->route[k-le1], path_tmp, sizeof(int)*le1);
           map->route[i+2+le2] = v31;
           map->route[i+3+le2] = v12;
-        }
-        else if (mn == 2) {
+        } else if (mn == 2) {
+          continue;
           map->route[i+1] = v22;
           map->route[k] = v12;
           memcpy(path_tmp, &map->route[i+2], sizeof(int)*le1);
@@ -136,8 +137,8 @@ void three_opt(struct Map *map) {
           reverse_path(map, k-le1, k-1);
           map->route[i+2+le2] = v31;
           map->route[i+3+le2] = v21;
-        }
-        else {
+        } else {
+          continue;
           map->route[i+1] = v31;
           map->route[k] = v21;
           memcpy(path_tmp, &map->route[i+2], sizeof(int)*le1);

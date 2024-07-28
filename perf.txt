@@ -17,3 +17,5 @@ ls: 局所探索
 12: or-1-opt -> 2-opt -> or-2-opt -> 2-opt + sv_rand
 13: (4) + sv_rand
  b: 3-opt -> or-1-opt -> or-2-opt -> 2-opt -> 3-opt -> or-2-opt -> or-1-opt -> 3-opt -> 2-opt + sv_rand
+ c: or-1-opt -> or-2-opt -> 2-opt -> 3-opt + sv_rand
+ d: 3-opt -> or-1-opt -> or-2-opt -> 2-opt
