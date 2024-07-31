@@ -33,6 +33,7 @@ int solve(struct Map *map, int *route_best, void f(struct Map *, int *, int), do
     while (1) {
       local_search(map);
       map->distance = calc_dis_sum(map, map->route);
+      if (map->distance/(double)map->best <= 1.009) { show_path(map); }
       if (prev_dis == map->distance) { break; }
       prev_dis = map->distance;
 
@@ -85,6 +86,30 @@ int main(int argc, char **argv) {
   calc_each_dis(&map);
 
   start_t = clock(); // 開始時のクロック
+
+  /*
+   1 14 13 12 7 6 15 5 11 9 10 16 3 2 4 8
+  map.route[0] = 1;
+  map.route[1] = 14;
+  map.route[2] = 13;
+  map.route[3] = 12;
+  map.route[4] = 7;
+  map.route[5] = 6;
+  map.route[6] = 15;
+  map.route[7] = 5;
+  map.route[8] = 11;
+  map.route[9] = 9;
+  map.route[10] = 10;
+  map.route[11] = 16;
+  map.route[12] = 3;
+  map.route[13] = 2;
+  map.route[14] = 4;
+  map.route[15] = 8;
+  map.route[16] = 1;
+
+  printf("%d\n", calc_dis_sum(&map, map.route));
+  return 0;
+  */
 
   // 最遠挿入法で解を構成
   if (!cl_opt.perf_mode) { printf("\n"); }
