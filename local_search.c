@@ -16,7 +16,9 @@ void local_search(struct Map *map) {
   /* or_two_opt(map); */
   /* two_opt(map); */
 
-  three_opt(map);
+  two_opt(map);
+  return;
+
   or_one_opt(map);
   or_two_opt(map);
   two_opt(map);
